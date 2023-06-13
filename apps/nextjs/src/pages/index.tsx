@@ -1,3 +1,4 @@
+import { useState } from "react";
 import type { NextPage } from "next";
 import Head from "next/head";
 
@@ -19,29 +20,6 @@ const apps = [
   },
 ];
 
-const tags = [
-  {
-    name: "design",
-    color: "emerald",
-  },
-  {
-    name: "dezvoltare",
-    color: "fuchsia",
-  },
-  {
-    name: "inventar",
-    color: "green",
-  },
-  {
-    name: "studio muzical",
-    color: "blue",
-  },
-  {
-    name: "collage auto",
-    color: "red",
-  },
-];
-
 const AppCard = ({ app }) => {
   return (
     <div className="bg-slate-300  h-96 w-64 cursor-pointer rounded-lg p-4 shadow transition-all hover:scale-105 hover:shadow-lg">
@@ -56,12 +34,76 @@ const AppCard = ({ app }) => {
   );
 };
 
-const FeedCard = ({ children }) => {
+const InfoCard = ({ children }) => {
   return <div className="bg-slate-50 rounded p-4 shadow">{children}</div>;
 };
 
-const InfoCard = ({ children }) => {
-  return <div className="bg-slate-50 rounded p-4 shadow">{children}</div>;
+const FeedCard = ({ children }) => {
+  const date = new Date();
+
+  return (
+    <div className="bg-slate-50 rounded p-4 shadow">
+      {children}
+
+      <div className="flex flex-row justify-end">
+        <div className="text-slate-800 mt-4 italic">
+          {date.toLocaleDateString({
+            year: "numeric",
+            month: "long",
+            day: "numeric",
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+const FeedTags = () => {
+  const [activeTag, setActiveTag] = useState(0);
+  return (
+    <div className="flex flex-row space-x-4">
+      <span
+        onClick={() => setActiveTag(0)}
+        className={`bg-emerald-100 hover:bg-emerald-200 text-emerald-800 cursor-pointer select-none rounded border px-3 py-1 text-sm font-medium ${
+          activeTag === 0 ? "border-emerald-500" : "border-emerald-100"
+        }`}
+      >
+        design
+      </span>
+      <span
+        onClick={() => setActiveTag(1)}
+        className={`bg-fuchsia-100 hover:bg-fuchsia-200 text-fuchsia-800 cursor-pointer select-none rounded border px-3 py-1 text-sm font-medium ${
+          activeTag === 1 ? "border-fuchsia-500" : "border-fuchsia-100"
+        }`}
+      >
+        dezvoltare
+      </span>
+      <span
+        onClick={() => setActiveTag(2)}
+        className={`bg-blue-100 hover:bg-blue-200 text-blue-800 cursor-pointer select-none rounded border px-3 py-1 text-sm font-medium ${
+          activeTag === 2 ? "border-blue-500" : "border-blue-100"
+        }`}
+      >
+        inventar
+      </span>
+      <span
+        onClick={() => setActiveTag(3)}
+        className={`bg-red-100 hover:bg-red-200 text-red-800 cursor-pointer select-none rounded border px-3 py-1 text-sm font-medium ${
+          activeTag === 3 ? "border-red-400" : "border-red-100"
+        }`}
+      >
+        collage auto
+      </span>
+      <span
+        onClick={() => setActiveTag(4)}
+        className={`bg-yellow-100 hover:bg-yellow-200 text-yellow-800 cursor-pointer select-none rounded border px-3 py-1 text-sm font-medium ${
+          activeTag === 4 ? "border-yellow-500" : "border-yellow-100"
+        }`}
+      >
+        studio muzical
+      </span>
+    </div>
+  );
 };
 
 const Home: NextPage = () => {
@@ -102,27 +144,13 @@ const Home: NextPage = () => {
                   <h2>Filtreaza postarile dupa categorie:</h2>
                 </div>
 
-                <div className="flex flex-row space-x-4">
-                  <span className="bg-emerald-100 text-emerald-800 rounded px-3 py-1 text-sm font-medium">
-                    design
-                  </span>
-                  <span className="bg-fuchsia-100 text-fuchsia-800 rounded px-3 py-1 text-sm font-medium">
-                    dezvoltare
-                  </span>
-                  <span className="bg-blue-100 text-blue-800 rounded px-3 py-1 text-sm font-medium">
-                    inventar
-                  </span>
-                  <span className="bg-red-100 text-red-800 rounded px-3 py-1 text-sm font-medium">
-                    collage auto
-                  </span>
-                  <span className="bg-yellow-100 text-yellow-800 rounded px-3 py-1 text-sm font-medium">
-                    studio muzical
-                  </span>
-                </div>
+                <FeedTags />
               </div>
 
               {[...Array(5).keys()].map((feedItem) => (
                 <FeedCard key={feedItem}>
+                  <h2 className="font-semibold">Post title</h2>
+                  <br />
                   Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Consequuntur maiores voluptas beatae, repellendus sint, ut
                   officia animi ratione alias dolor, libero excepturi!
