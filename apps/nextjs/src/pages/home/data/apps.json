@@ -1,0 +1,17 @@
+[
+  {
+    "logoName": "Inv",
+    "appName": "Inventar",
+    "description": "Sistem de gestionare a inventarului."
+  },
+  {
+    "logoName": "Muz",
+    "appName": "Studio Muzical",
+    "description": "Studio muzical."
+  },
+  {
+    "logoName": "Col",
+    "appName": "Collage Auto",
+    "description": "Website de prezentare pentru vanzare de masini."
+  }
+]
