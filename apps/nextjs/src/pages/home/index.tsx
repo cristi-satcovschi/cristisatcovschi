@@ -23,9 +23,9 @@ const Home: NextPage = () => {
         <Apps />
 
         {/* content */}
-        <div className="bg-slate-200 flex flex-row px-32 py-8">
+        <div className="bg-slate-200 flex flex-col px-4 pb-2 pt-12 lg:flex-row lg:px-32 lg:py-8">
           {/* content -- info */}
-          <div className="m-8 w-1/3">
+          <div className="m-2 lg:m-8 lg:w-1/3">
             <div className="flex flex-col space-y-8">
               <Servicii />
               <Contact />
@@ -33,7 +33,7 @@ const Home: NextPage = () => {
           </div>
 
           {/* content -- feed */}
-          <div className="m-8 w-2/3">
+          <div className="m-2 mt-6 lg:m-8 lg:w-2/3">
             <div className="space-y-8">
               <div className="bg-slate-50 flex flex-col space-y-4 rounded p-4 shadow">
                 <div>
