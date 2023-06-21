@@ -11,19 +11,27 @@ const Home: NextPage = () => {
   return (
     <>
       <Head>
-        <title>App</title>
+        <title>Cristi Șatcovschi</title>
         <meta name="description" content="App desc" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <main>
+      <main className="bg-slate-200">
         {/* heading */}
-        {/* <div className="bg-slate-200 h-64 border-b"></div> */}
+        <div className="flex items-center justify-between border-b p-8">
+          <div className="bg-slate-600 flex h-64 w-64 items-center justify-center rounded-full">
+            <span className="text-slate-800 text-6xl">Logo</span>
+          </div>
+          <span className="text-zinc-900 select-none text-right text-8xl font-bold">
+            Cristi <br />
+            Șatcovschi
+          </span>
+        </div>
 
         {/* apps */}
         <Apps />
 
         {/* content */}
-        <div className="bg-slate-200 flex flex-col px-4 pb-2 pt-12 lg:flex-row lg:px-32 lg:py-8">
+        <div className="flex flex-col px-4 pb-2 pt-12 lg:flex-row lg:px-32 lg:py-8">
           {/* content -- info */}
           <div className="m-2 lg:m-8 lg:w-1/3">
             <div className="flex flex-col space-y-8">
@@ -42,6 +50,7 @@ const Home: NextPage = () => {
 
                 <FeedTags />
               </div>
+
               <FeedCard>
                 <img
                   className="float-right rotate-12"
