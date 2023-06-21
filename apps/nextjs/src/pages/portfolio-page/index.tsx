@@ -1,6 +1,8 @@
 import React, { useRef, useState } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
 
+import { PhoneModel } from "../../3d-models/phone/PhoneModel";
+
 /**
  * ControlBarButton types:
  * - Button
@@ -35,7 +37,7 @@ const ControlBar = () => {
 
 const TextContent = () => {
   return (
-    <div className="pb-32">
+    <div className="px-8 pb-32">
       Lorem, ipsum dolor sit amet consectetur adipisicing elit. Ullam nobis,
       libero soluta ipsa rem, illum aspernatur saepe distinctio id tempore
       blanditiis perferendis sint dignissimos. A obcaecati esse inventore eos
@@ -271,14 +273,20 @@ function Box(props) {
  * the width is hardcoded for now
  */
 
+const deg2rad = (degrees: number) => degrees * (Math.PI / 180);
+
 const ThreeModelTest = () => {
   return (
     <div>
-      <Canvas style={{ width: 574, height: 400 }}>
+      <Canvas style={{ width: 851.5, height: 400 }}>
         <ambientLight />
         <pointLight position={[10, 10, 10]} />
-        <Box position={[-1.2, 0, 0]} />
-        <Box position={[1.2, 0, 0]} />
+        {/* <Box position={[-1.2, 0, 0]} /> */}
+        {/* <Box position={[1.2, 0, 0]} /> */}
+        <PhoneModel
+          position={[0.7, -0.5, 4.3]}
+          rotation={[0, deg2rad(-10), Math.PI / 2]}
+        />
       </Canvas>
     </div>
   );
