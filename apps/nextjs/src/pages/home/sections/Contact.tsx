@@ -31,6 +31,7 @@ const Contact = () => (
         />
         <div className="flex flex-grow items-center">
           <a
+            target="_blank"
             className="text-blue-600 dark:text-blue-500 break-all font-medium underline hover:no-underline"
             href="https://m.me/cristi.satcovschi"
           >
@@ -47,6 +48,7 @@ const Contact = () => (
         />
         <div className="flex flex-grow items-center">
           <a
+            target="_blank"
             className="text-blue-600 dark:text-blue-500 break-all font-medium underline hover:no-underline"
             href="https://www.instagram.com/cristi.satcovschi"
           >
@@ -63,6 +65,7 @@ const Contact = () => (
         />
         <div className="flex flex-grow items-center">
           <a
+            target="_blank"
             className="text-blue-600 dark:text-blue-500 break-all font-medium underline hover:no-underline"
             href="https://github.com/cristi-satcovschi"
           >
