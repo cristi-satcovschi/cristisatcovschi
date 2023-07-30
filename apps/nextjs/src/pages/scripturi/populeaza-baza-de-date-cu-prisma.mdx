@@ -1,0 +1,93 @@
+```js
+// TODO: connect the seed script to the database
+
+// products.forEach(async (product) => {
+//   await prisma.product.create({
+//     data: {
+//       name: product.name,
+//       code: product.code,
+//       crt: Number(product.id) + 1,
+//       price: product.price ? parseFloat(product.price) : 0,
+//       quantity: product.quantity ? parseInt(product.quantity) : 0,
+//       quantitySold: `${product.sold}`
+//         .split(",")
+//         .reduce((sum, num) => (sum += Number(num)), 0),
+//     },
+//   });
+// });
+const products = require("../products2.json");
+
+const { PrismaClient } = require("@prisma/client");
+
+const prisma = new PrismaClient();
+const fs = require("fs");
+
+async function main() {
+  const result = await prisma.product.deleteMany({});
+  console.log(`Deleted ${result.count} records from the table.`);
+
+  // const products = await prisma.product.findMany({
+  // orderBy: "name",
+  // });
+
+  console.log("products found: ", products.length);
+  const _products = products
+    .reduce((accumulator, current) => {
+      let itemIndex = accumulator.findIndex(
+        (item) =>
+          item.name === current.name &&
+          item.code === current.code &&
+          item.price === current.price,
+      );
+
+      if (itemIndex != -1) {
+        accumulator[itemIndex] = {
+          ...accumulator[itemIndex],
+          quantity:
+            Number(accumulator[itemIndex].quantity) + Number(current.quantity),
+          quantitySold:
+            Number(accumulator[itemIndex].quantitySold) +
+            Number(current.quantitySold),
+        };
+      } else {
+        accumulator = accumulator.concat(current);
+      }
+
+      return accumulator;
+    }, [])
+    .sort((a, b) => a.name.localeCompare(b.name))
+    .map((p, idx) => ({ ...p, crt: idx }));
+  console.log("result found: ", _products.length);
+
+  // fs.writeFileSync("./products2.json", JSON.stringify(_products, null, 2));
+
+  // const deleteResult = await prisma.product.deleteMany({});
+  // console.log(`Deleted ${deleteResult} records from the table.`);
+
+  // console.log("products", products);
+
+  // console.log(`Added ${products.length} records in the table.`);
+
+  for (let j = 0; j < _products.length; j++) {
+    await prisma.product.create({
+      data: {
+        name: _products[j].name,
+        code: _products[j].code,
+        crt: _products[j].crt,
+        price: _products[j].price,
+        quantity: _products[j].quantity,
+        quantitySold: _products[j].quantitySold,
+      },
+    });
+  }
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });
+```

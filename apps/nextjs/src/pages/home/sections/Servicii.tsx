@@ -28,6 +28,19 @@ const Servicii = () => (
           <span className="text-slate-900 font-medium">Dezvoltare</span>
         </div>
       </li>
+      <li>
+        <div className="font-medium">
+          <span className="border-slate-400 mx-1 border border-dashed p-2">
+            Design
+          </span>{" "}
+          si{" "}
+          <pre className="mx-1 inline-block">
+            {"<"}
+            <span className="text-green-600">dezvoltare</span> {"/>"}
+          </pre>
+          aplicatii web si native.
+        </div>
+      </li>
     </ul>
   </SectionCard>
 );

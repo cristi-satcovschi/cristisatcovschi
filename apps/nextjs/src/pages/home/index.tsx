@@ -1,11 +1,39 @@
 import type { NextPage } from "next";
 import Head from "next/head";
+import Image from "next/image";
+import Link from "next/link";
 
 import FeedCard from "./components/FeedCard";
 import FeedTags from "./components/FeedTags";
+import SectionCard from "./components/SectionCard";
 import Apps from "./sections/Apps";
 import Contact from "./sections/Contact";
 import Servicii from "./sections/Servicii";
+
+const Grid = ({ children }) => {
+  return <div className="grid grid-cols-3 gap-4">{children}</div>;
+};
+
+const GridItem = ({ children, icon, link = "" }) => {
+  return (
+    <div className="group">
+      <Link href={link}>
+        <div
+          className={`border-slate-200 h-24 w-24 rounded-xl ${
+            !icon && "bg-slate-400 group-hover:bg-slate-300 border"
+          }`}
+        >
+          {icon}
+        </div>
+        <div className="w-24 text-center">
+          <span className="group-hover:text-slate-700 font-medium">
+            {children}
+          </span>
+        </div>
+      </Link>
+    </div>
+  );
+};
 
 const Home: NextPage = () => {
   return (
@@ -16,40 +44,97 @@ const Home: NextPage = () => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main className="bg-slate-200">
-        {/* heading */}
-        <div className="flex items-center justify-between border-b p-8">
-          <div className="bg-slate-600 flex h-64 w-64 items-center justify-center rounded-full">
-            <span className="text-slate-800 text-6xl">Logo</span>
-          </div>
-          <span className="text-zinc-900 select-none text-right text-8xl font-bold">
-            Cristi <br />
-            Șatcovschi
-          </span>
-        </div>
-
         {/* apps */}
         <Apps />
 
         {/* content */}
         <div className="flex flex-col px-4 pb-2 pt-12 lg:flex-row lg:px-32 lg:py-8">
-          {/* content -- info */}
-          <div className="m-2 lg:m-8 lg:w-1/3">
+          {/* info */}
+          <div className="m-2 min-w-fit lg:m-8">
             <div className="flex flex-col space-y-8">
-              <Servicii />
+              {/* <Servicii /> */}
+              <SectionCard>
+                <h2 className="font-semibold">Logofoliu</h2>
+                <hr className="mb-6 mt-4" />
+
+                <Grid>
+                  <GridItem>Cristi Satcovschi</GridItem>
+                  <GridItem>Inventar</GridItem>
+                  <GridItem>Studio Muzical</GridItem>
+                  <GridItem>Collage Auto</GridItem>
+                </Grid>
+              </SectionCard>
+
+              <SectionCard>
+                <div className="flex justify-between">
+                  <h2 className="font-semibold">Componente</h2>
+                  <button
+                    type="button"
+                    className="bg-slate-400 hover:bg-slate-200 -my-1 rounded-lg border px-3 py-1"
+                  >
+                    20
+                  </button>
+                </div>
+                <hr className="mb-6 mt-4" />
+
+                <Grid>
+                  <GridItem link="/componente/formular-cu-etape">
+                    Formular cu Etape
+                  </GridItem>
+                  <GridItem>Calendar</GridItem>
+                  <GridItem>Pagina de Listare</GridItem>
+                  <GridItem>Pagina de Detalii</GridItem>
+                  <GridItem>Pian</GridItem>
+                  <GridItem>Elemente de Formular</GridItem>
+                  <GridItem>Paginare</GridItem>
+                  <GridItem>Autentificare</GridItem>
+                  <GridItem>Statistici</GridItem>
+                </Grid>
+              </SectionCard>
+
+              <SectionCard>
+                <h2 className="font-semibold">Scripturi</h2>
+                <hr className="mb-6 mt-4" />
+
+                <Grid>
+                  <GridItem
+                    icon={
+                      <div className="bg-sky-500 group-hover:bg-sky-400 text-sky-50 flex h-full w-full items-center justify-center rounded-xl text-5xl">
+                        .vb
+                      </div>
+                    }
+                  >
+                    Genereaza campuri editable in Calc
+                  </GridItem>
+                  <GridItem
+                    icon={
+                      <div className="bg-yellow-400 group-hover:bg-yellow-300 text-yellow-50 flex h-full w-full items-center justify-center rounded-xl text-5xl">
+                        .js
+                      </div>
+                    }
+                  >
+                    Populeaza baza de date cu Prisma
+                  </GridItem>
+                  <GridItem
+                    icon={
+                      <div className="bg-cyan-400 group-hover:bg-cyan-300 text-cyan-50 flex h-full w-full items-center justify-center rounded-xl text-5xl">
+                        .ts
+                      </div>
+                    }
+                  >
+                    Genereaza sunete cu Elementary
+                  </GridItem>
+                </Grid>
+              </SectionCard>
+
               <Contact />
             </div>
           </div>
 
-          {/* content -- feed */}
-          <div className="m-2 mt-6 lg:m-8 lg:w-2/3">
+          {/* feed */}
+          <div className="m-2 mt-6 lg:m-8">
             <div className="space-y-8">
-              <div className="bg-slate-50 flex flex-col space-y-4 rounded p-4 shadow">
-                <div>
-                  <h2>Filtreaza postarile dupa categorie:</h2>
-                </div>
-
-                <FeedTags />
-              </div>
+              <FeedTags />
 
               <FeedCard>
                 <img

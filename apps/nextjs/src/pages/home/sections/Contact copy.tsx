@@ -6,7 +6,7 @@ const Contact = () => (
     <hr className="mb-6 mt-4" />
 
     <ul className="space-y-2">
-      <li className="flex flex-row space-x-4">
+      <li className="flex flex-row space-x-8">
         <img
           width="64"
           height="64"
@@ -18,11 +18,11 @@ const Contact = () => (
             className="text-blue-600 dark:text-blue-500 break-all font-medium underline hover:no-underline"
             href="mailto: cristi.satcovschi@gmail.com?subject = Feedback&body = Message"
           >
-            contact@cristisatcovschi.ro
+            cristi.satcovschi@gmail.com
           </a>
         </div>
       </li>
-      <li className="flex flex-row space-x-4">
+      <li className="flex flex-row space-x-8">
         <img
           width="64"
           height="64"
@@ -39,7 +39,7 @@ const Contact = () => (
           </a>
         </div>
       </li>
-      <li className="flex flex-row space-x-4">
+      <li className="flex flex-row space-x-8">
         <img
           width="64"
           height="64"
@@ -56,7 +56,7 @@ const Contact = () => (
           </a>
         </div>
       </li>
-      <li className="flex flex-row space-x-4">
+      <li className="flex flex-row space-x-8">
         <img
           width="64"
           height="64"

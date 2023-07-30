@@ -1,0 +1,75 @@
+{
+  "logofoliu": [
+    {
+      "name": "Cristi Satcovschi",
+      "link": ""
+    },
+    {
+      "name": "Inventar",
+      "link": ""
+    },
+    {
+      "name": "Studio Muzical",
+      "link": ""
+    },
+    {
+      "name": "Collage Auto",
+      "link": ""
+    }
+  ],
+  "componente": [
+    {
+      "name": "Formular cu Etape",
+      "link": ""
+    },
+    {
+      "name": "Calendar",
+      "link": ""
+    },
+    {
+      "name": "Pagina de Listare",
+      "link": ""
+    },
+    {
+      "name": "Pagina de Detalii",
+      "link": ""
+    },
+    {
+      "name": "Pian",
+      "link": ""
+    },
+    {
+      "name": "Elemente de Formular",
+      "link": ""
+    },
+    {
+      "name": "Paginare",
+      "link": ""
+    },
+    {
+      "name": "Autentificare",
+      "link": ""
+    },
+    {
+      "name": "Statistici",
+      "link": ""
+    }
+  ],
+  "scripturi": [
+    {
+      "name": "Genereaza campuri editable in Calc",
+      "link": "",
+      "extension": ".vb"
+    },
+    {
+      "name": "Populeaza baza de date cu Prisma",
+      "link": "",
+      "extension": ".js"
+    },
+    {
+      "name": "Genereaza sunete cu Elementary",
+      "link": "",
+      "extension": ".ts"
+    }
+  ]
+}
